@@ -4,6 +4,8 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV SCALA_VERSION 2.11
 ENV KAFKA_VERSION 0.10.1.0
 ENV KAFKA_HOME /opt/kafka_"$SCALA_VERSION"-"$KAFKA_VERSION"
+ENV PATH "$PATH:$KAFKA_HOME/bin"
+
 
 # Install Kafka and other needed things
 # http://mirror.netinch.com/pub/apache/kafka/0.10.1.1/kafka_2.10-0.10.1.1.tgz
@@ -18,4 +20,4 @@ RUN apt-get update && \
 
 VOLUME /tmp/kafka-logs
 
-CMD ["cd" "$KAFKA_HOME/bin"]
+CMD ["bash"]
