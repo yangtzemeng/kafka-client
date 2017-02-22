@@ -15,7 +15,7 @@ RUN apt-get update && \
     tar xfz /tmp/kafka_"$SCALA_VERSION"-"$KAFKA_VERSION".tgz -C /opt && \
     rm /tmp/kafka_"$SCALA_VERSION"-"$KAFKA_VERSION".tgz && \
     rm $KAFKA_HOME/config/server.properties && \
-    ln -s $KAFKA_HOME/ /opt/kafka/
+    ln -s $KAFKA_HOME /opt/kafka/
 
 VOLUME /tmp/kafka-logs
 
