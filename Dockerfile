@@ -1,4 +1,4 @@
-FROM java:openjdk-8-jre
+FROM ubuntu:16.04
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV SCALA_VERSION 2.11
@@ -8,7 +8,7 @@ ENV KAFKA_HOME /opt/kafka_"$SCALA_VERSION"-"$KAFKA_VERSION"
 # Install Kafka and other needed things
 # http://mirror.netinch.com/pub/apache/kafka/0.10.1.1/kafka_2.10-0.10.1.1.tgz
 RUN apt-get update && \
-    apt-get install -y wget supervisor dnsutils && \
+    apt-get install -y wget supervisor dnsutils openjdk-8-jre && \
     rm -rf /var/lib/apt/lists/* && \
     apt-get clean && \
     wget -q http://mirror.netinch.com/pub/apache/kafka/"$KAFKA_VERSION"/kafka_"$SCALA_VERSION"-"$KAFKA_VERSION".tgz -O /tmp/kafka_"$SCALA_VERSION"-"$KAFKA_VERSION".tgz && \
@@ -18,4 +18,4 @@ RUN apt-get update && \
 
 VOLUME /tmp/kafka-logs
 
-CMD ["cd", "$KAFKA_HOME"]
+CMD ["cd" "$KAFKA_HOME/bin"]
