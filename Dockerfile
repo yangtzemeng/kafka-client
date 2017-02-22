@@ -14,8 +14,9 @@ RUN apt-get update && \
     wget -q http://mirror.netinch.com/pub/apache/kafka/"$KAFKA_VERSION"/kafka_"$SCALA_VERSION"-"$KAFKA_VERSION".tgz -O /tmp/kafka_"$SCALA_VERSION"-"$KAFKA_VERSION".tgz && \
     tar xfz /tmp/kafka_"$SCALA_VERSION"-"$KAFKA_VERSION".tgz -C /opt && \
     rm /tmp/kafka_"$SCALA_VERSION"-"$KAFKA_VERSION".tgz && \
-    rm $KAFKA_HOME/config/server.properties
+    rm $KAFKA_HOME/config/server.properties && \
+    ln -s $KAFKA_HOME/ /opt/kafka/
 
 VOLUME /tmp/kafka-logs
 
-CMD ["/bin/bash"]
+CMD ["/bin/bash", "cd", "/opt/kafka/bin/"]
