@@ -18,4 +18,4 @@ RUN apt-get update && \
 
 VOLUME /tmp/kafka-logs
 
-CMD ["/bin/bash", "cd", "$KAFKA_HOME"]
+CMD ["cd", "$KAFKA_HOME"]
